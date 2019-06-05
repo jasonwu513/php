@@ -47,6 +47,7 @@ p {
 h1, h2, h3, h4, h5, h6 {
    color: #404040;
    line-height: 36px;
+   text-align: center;
 }
 h1 {
    margin-bottom: 18px;
@@ -78,13 +79,13 @@ blockquote {
    font-family:georgia,serif;
    font-style: italic;
 }
-blockquote:before {
+/* blockquote:before {
    content:"\201C";
    font-size:40px;
    margin-left:-10px;
    font-family:georgia,serif;
    color:#eee;
-}
+} */
 blockquote p {
    font-size: 14px;
    font-weight: 300;
@@ -155,12 +156,15 @@ include("./lib/Parsedown.php");
 
 
 
-$path    = './';
-$files = scandir($path);
+// $path    = './';
+// $files = scandir($path);
+
 
 $dirArr = glob('./*');
 
 function globDir($dirname, $type=''){
+$ignoreFile = ["lib","css"];
+$ignoreFileLength = count($ignoreFile);
 
     
     $site ='http://php.yaoshou365.com/';
@@ -187,21 +191,18 @@ function globDir($dirname, $type=''){
     
         if(is_file($v)){
             
-            // echo 'levelNfile: ' .$dirInfoLevel;
-            // echo $v ."</br>";
-            // echo substr( $v , 2 ) ."</br>";
-            // echo basename($v) . "<br>";
 
             if (strpos($v, '.md') == false) {
                 echo  "<a href=\"" .$site. substr( $v , 2 )."\">".substr( $v , 2 )." </a> <br>";
             }
-        }elseif(is_dir($v)){
-            echo 'levelfoler: ' ." ". $dirInfoLevel. "<br> ";
-            //  echo   "<a href=\"" .$site.$files[$i]."\">".$files[$i]." </a><br>";
+        }elseif(is_dir($v) && !in_array(substr($v,2), $ignoreFile)){
+            // echo 'levelfoler: ' ." ". $dirInfoLevel. "<br> ";
+              echo   substr($v,2) . "<br>";
             globDir($v);
         }
         if ($i == $len - 1) {
-        	$dirInfoLevel--;
+            $dirInfoLevel--;
+            echo "<br>";
         }
         $i++;
         
@@ -214,7 +215,7 @@ $basename = basename(__FILE__);
 echo $basename;
 $Parsedown = new Parsedown();
 $markdownFile = fopen ( basename(__FILE__, '.php') . '.md'  , 'r');
-echo $Parsedown->text(fread($markdownFile,filesize('index.md')));
+echo $Parsedown->text(fread($markdownFile,filesize(basename(__FILE__, '.php') . '.md')));
 
 
 

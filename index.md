@@ -1,14 +1,15 @@
-# Index for Category
+# 在index file 上產生目錄
 
-## using function
+## 使用到的function function
 
 ```php
 glob($path.type {})
 ```
 > 搜尋路徑下的檔案&資料夾並放入array
 
-
+```php
 foreach($array as $v)
+```
 > using i++ to do somthing at n round
 
 
@@ -20,6 +21,8 @@ count(array)
 
 ```php
 strops($v, "string")
+
+#return true or false
 ```
 是否含有字串
 
