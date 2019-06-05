@@ -12,8 +12,8 @@ echo "<br>";
 
 $ages = ["peter"=>"35" ,"Ben"=>"36","jason"=>"30"];
 
-foreach($ages as $age => $value ){
-    echo " $age".":".  "$value \n ";
+foreach($ages as $name => $value ){
+    echo " $name".":".  "$value \n ";
 }
 
 echo "<br>";
