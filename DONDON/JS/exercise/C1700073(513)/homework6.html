@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+  h2{text-align: center;
+  }
+  input{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  table{
+    margin: auto;
+  }
+</style>
+</head>
+<body>
+	<h2>確認訂單</h2>
+	<form method="post" action="">
+		<table border="1">
+			<tr>
+				<td>收件人姓名</td>
+				<td><input type="text"></td>
+			</tr>
+			<tr>
+				<td>收件人地址</td>
+				<td><input type="text"></td>
+			</tr>
+			<tr>
+				<td>付款方式</td>
+				<td>
+
+					<label><input type="radio" name="#" id="cash">現金</label>
+					<label><input type="radio" name="#" id="card">信用卡</label>
+					<label><input type="radio" name="#" id="atm">atm轉帳</lable>
+					<br>
+					<div id="cardcontent" style="display:none">
+						<label>信用卡號碼:<input type="text" ></label>
+						<br>
+						<label>到期年月:<input type="text"></label>
+					</div>
+
+					<div id="atmcontent" style="display:none">
+						<label>銀行代號:<input type="text"></label>
+						<br>
+						<label>扣款帳號:<input type="text"></label>
+					</div>
+				</td>
+
+			</tr>
+		</table>
+	</form>
+
+	<script type="text/javascript">
+		document.getElementById("cash").onclick=cashclick;
+		document.getElementById("card").onclick=cardclick;
+		document.getElementById("atm").onclick=atmclick;
+
+		function cashclick(){
+			document.getElementById("cardcontent").style.display="none";
+			document.getElementById("atmcontent").style.display="none";
+		}
+		function cardclick(){
+			document.getElementById("cardcontent").style.display="initial";
+			document.getElementById("atmcontent").style.display="none";
+		}
+		function atmclick(){
+			document.getElementById("cardcontent").style.display="none";
+			document.getElementById("atmcontent").style.display="initial";
+		}
+	</script>
+</body>
+</html>

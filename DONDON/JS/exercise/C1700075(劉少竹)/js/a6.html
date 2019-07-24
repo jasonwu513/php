@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	
+    <script type="text/javascript">
+    var yy=Math.round(Math.random()*3)+4;
+    document.write("<span>跑出"+yy+"</span><br>");
+
+    function rgb(){
+        var rgb="#";
+        for(var i=0;i<6;i++){
+            var temp=Math.round(Math.random()*15);
+            if(temp==10){
+                temp="a";
+            }else if(temp==11){
+                temp="b";
+            }else if(temp==12){
+                temp="c";
+            }else if(temp==13){
+                temp="d";
+            }else if(temp==14){
+                temp="e";
+            }else if(temp==15){
+                temp="f";
+            }
+            rgb+=temp;
+        }
+        return rgb;
+
+    }
+
+    for(var i=0; i<yy; i++){
+        var gg=Math.round(Math.random()*9);
+    	document.write("<span style='color:"+rgb()+";'>"+gg+"</span><br>");
+    }
+
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3rand</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		div{
+			width:500px;
+			margin:20px auto;
+			background-color: #fdd;
+			padding:20px;
+			text-align: center;
+		}
+		h2{
+			font-size: 24px;
+			color:#666;
+			padding:20px;
+
+		}
+		input.box{
+			width:100px;
+			height: 30px;
+			padding:5px;
+			box-sizing: border-box;;
+		}
+		#send{
+			display: block;
+			width:100px;
+			height:30px;
+			margin:10px auto;
+			border:none;
+			background-color: #f99;
+			color:#fff;
+			cursor: pointer;
+		}
+		input#send:focus{
+			outline: none;
+		}
+		input#send:hover{
+			background-color: #faa;
+		}
+		#a{
+			margin:20px auto;
+			display: block;
+			width: 300px;
+			height: 50px;
+			box-sizing: border-box;
+			font-size: 20px;
+			color:#f33;
+		}
+	</style>
+
+</head>
+<body>
+	
+	<div>
+		<h2>請輸入數字範圍</h2>
+		<input class="box" type="number" id="min" placeholder="填入最小值">
+		～
+		<input class="box" type="number" id="max" placeholder="填入最大值">
+		<input type="button"  id="send" value="計算" onClick="ans()">
+		<div id="a"></div>
+	</div>
+
+	<script type="text/javascript">
+		var min = document.getElementById("min");
+		var max = document.getElementById("max");	
+
+		function getRandom(min, max) {	//取得 min(最小值) ~ max(最大值) 之間的亂數
+			var answer = Math.floor( Math.random() * (max - min ) )+ parseInt(min);
+			return answer;
+		}
+
+		function ans() {
+			var minNum = document.getElementById("min").value;
+			var maxNum = document.getElementById("max").value;
+
+			
+			document.getElementById("a").innerHTML = getRandom(minNum,maxNum);
+			
+		}
+
+		// function rand(min, max){
+		// var answer = Math.round(Math.random()*(max-min)) + parseInt(min);
+
+		// return answer;
+		// }
+
+		// function ans(){
+		// 	var minimum = document.getElementById("min").value;
+		// 	var maximum = document.getElementById("max").value;
+
+		// 	if(parseInt(maximum) - parseInt(minimum) >= 0){
+		// 		document.getElementById("a").innerHTML = rand(minimum,maximum);
+		// 	}
+		// 	else{
+		// 		document.getElementById("a").innerHTML = "範圍錯誤"
+		// 	}
+		// }
+
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form>
+	<table border="1" align="center" cellpadding="10px">
+		<caption>確認訂單</caption>
+		<tr>
+			<td>收件人姓名：</td>
+			<td><input type="text" name="" id="name"></td>
+		</tr>
+		<tr>
+			<td>收件人地址：</td>
+			<td><input type="text" name="" id="address"></td>
+		</tr>
+		<tr>
+			<td align="center">付款方式</td>
+			<td>
+				<input type="radio" name="pay" id="cash">現金
+				<input type="radio" name="pay" id="credit">信用卡
+				<input type="radio" name="pay" id="atm">ATM轉帳
+				<div id="creditarea" style="display: none">
+					信用卡號碼：<input type="text" name="" id=""><br>
+					到期年月：<input type="text" name="" id="">					
+				</div>
+				<div id="atmarea" style="display: none">
+					銀行代號：<input type="text" name="" id=""><br>
+					扣款帳號：<input type="text" name="" id="">					
+				</div>
+			</td>
+		</tr>
+	</table>
+	</form>
+	<script type="text/javascript">
+
+		function init(){
+			var name =document.getElementById("name");
+			var address =document.getElementById("address");
+			var cash=document.getElementById("cash");
+			var credit=document.getElementById("credit");
+			var atm=document.getElementById("atm");
+			var creditarea=document.getElementById("creditarea");
+			var atmarea=document.getElementById("atmarea");
+
+			function cashterm(){
+				creditarea.style.display="none";
+				atmarea.style.display="none";
+				name.value="";
+				address.value="";
+			}
+			function creditterm(){
+				creditarea.style.display='';
+				atmarea.style.display="none";
+				name.value="小丸子";
+				address.value="中壢區中大路1號";
+			}
+			function atmterm(){
+				creditarea.style.display="none";
+				atmarea.style.display='';
+				name.value="小丸子";
+				address.value="中壢區中大路1號";	
+			}
+
+			cash.onclick=cashterm;
+			credit.onclick=creditterm;
+			atm.onclick=atmterm;
+			// if(cash.checked==true){
+			// 	creditarea.style.display=none;
+			// 	atmarea.style.display=none;
+			// }else if(credit.checked==true){
+			// 	creditarea.style.display='';
+			// 	atmarea.style.display=none;
+			// }else if(atm.checked==true){
+			// 	creditarea.style.display=none;
+			// 	atmarea.style.display='';
+			// }
+		}			
+		window.onload=init;
+
+		
+	</script>
+</body>
+</html>

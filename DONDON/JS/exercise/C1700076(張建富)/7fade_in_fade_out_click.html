@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Fade in, Fade out(onclick) </title>
+</head>
+<body>
+<center>
+<input type="button" id="btnInOut" value="淡出"><br>
+<img src="melon.gif" alt="小玉" id="img1" style="opacity:1"> 	
+</center>
+</body>
+</html>
+<script>
+var opacity=1;
+var timerid;
+
+function FadeOut(){
+	var img1 = document.getElementById("img1");
+	opacity -= 0.1;
+	img1.style.opacity = opacity;
+	if(opacity <= 0){
+		clearInterval(timerid);
+		document.getElementById("btnInOut").value="淡入";
+		document.getElementById("btnInOut").disabled = false;
+	}
+	console.log(opacity);
+}
+
+function Fadein(){
+	var img1 = document.getElementById("img1");
+	opacity += 0.1;
+	img1.style.opacity = opacity;
+	if(opacity >= 1){
+		clearInterval(timerid);
+		document.getElementById("btnInOut").value="淡出";
+		document.getElementById("btnInOut").disabled = false;
+	}
+	console.log(opacity);
+}
+
+
+
+function changeOP(){
+	if(document.getElementById("btnInOut").value=="淡出"){
+		timerid = setInterval(FadeOut , 100);
+		document.getElementById("btnInOut").disabled = true;////跑完之前讓按鈕不能按~~不讓USER一直按跑出新的計數器	
+	}else{
+		timerid = setInterval(Fadein , 100);
+		document.getElementById("btnInOut").disabled = true;
+	}
+}
+
+function init(){
+	document.getElementById("btnInOut").onclick = changeOP;
+}
+window.onload = init;
+
+</script>

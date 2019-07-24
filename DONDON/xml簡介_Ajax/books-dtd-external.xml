@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" ?>
+<book>
+  <bookId>A090</bookId>
+	<bookName>XML精要總覽</bookName>
+	<author>Elliotte Rusty Harol</author>
+	<price>680</price>
+	<category>程式設計</category>
+	<publishDate>2001-11-01</publishDate>
+	<publisher>O'REILLY</publisher>
+</book>

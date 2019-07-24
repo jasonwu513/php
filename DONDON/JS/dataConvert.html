@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+<script type="text/javascript">
+var total,subTotal;
+var price="20";
+var amount="22";
+var shipment="80";
+
+subTotal = price * amount; //440
+total = subTotal + shipment;//"440" + "80"
+document.write("小計 : " , subTotal, "<br>");
+document.write("總計 : " , total, "<br>");
+document.write("總計 : " , subTotal + parseInt(shipment), "<br>");
+</script>  
+
+
+<h2>===parseInt()</h2>
+<script type="text/javascript">
+document.write("parseInt('321abc') : ", parseInt('321abc'), "<br>");
+document.write("parseInt('321abc',16) : ", parseInt('321abc',16), "<br>");
+document.write("parseInt('321abc',8) : ", parseInt('321abc',8), "<br>");
+document.write("parseInt('321abc',2) : ", parseInt('321abc',2), "<br>");
+</script>  
+    
+</body>
+</html>

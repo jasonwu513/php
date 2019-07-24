@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+
+</head>
+<body>
+<h2>申請加入會員</h2>
+<form action="image.html" method="get">
+<fieldset style="width:100px">
+<legend>帳號</legend>
+<input type="text" name="memId" maxlength="10" size="12" value="Sara" placeholder="請輸入10碼內的字">
+</fieldset>
+<br>
+密碼<input type="password" name="memPsw" maxlength="10"><br>
+性別	<input type="radio" id="sex1" name="gender" value="male" style="display:none">
+    <input type="radio" id="sex2" name="gender" value="female" style="display:none">	<br>
+    <label for="sex1"><img class="genderImg"  src="images/male.png"></label>
+    <label for="sex2"><img class="genderImg"  src="images/female.png"></label>
+    <br>
+備註<br>
+<textarea name="note" rows="5" cols="30" wrap="off">Welcome to HTML</textarea><br>
+
+<input type="submit" value="確定加入">
+<input type="reset" value="還原">
+<input type="button" value="start">
+
+<br><br>
+<button type="submit"><img src="images/add_member.png" width="20"> 確定加入</button>
+</form>
+<script type="text/javascript">
+var genderImgs = document.getElementsByClassName("genderImg");
+for( var i=0; i<genderImgs.length; i++){
+	
+	genderImgs[i].onclick=function(e){
+	  for( var i=0; i<genderImgs.length; i++){
+         genderImgs[i].style.border="none";
+	  }	
+ 	  e.target.style.border = "dotted 1px deepPink";
+	}
+	
+}	
+</script>
+</body>
+</html>

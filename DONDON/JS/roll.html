@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<style type="text/css">
+	td {width:60px;height:60px;}
+</style>
+</head>
+<body>
+<center>
+<input type="button" id="btn" value="start"> 
+<table border="1" cellspacing="0">
+	<tr><td id="c0"> </td><td id="c1"> </td><td id="c2"> </td><td id="c3"> </td></tr>
+	<tr><td id="c11"> </td><td colspan="2" rowSpan="2"> </td><td id="c4"> </td></tr>
+	<tr><td id="c10"> </td><td id="c5"> </td></tr>
+	<tr><td id="c9"> </td><td id="c8"> </td><td id="c7"> </td><td id="c6"> </td></tr>
+</table>
+</center>
+<script type="text/javascript">
+var timerId;
+var times=0,count=0;
+var pos = 11;
+var speed = 100;
+
+function $id(id){
+	return document.getElementById(id);
+}
+
+function run(){
+	count++;
+	var preCell = "c" + ( pos ); 
+  	$id(preCell).style.backgroundColor="white";
+  
+	pos++;
+	pos = pos % 12;
+	var curCell = "c" + pos;
+  	$id(curCell).style.backgroundColor="gold";
+  	if( count % 5 == 0){
+  		speed += 50;
+  	}
+  	
+  	timerId = setTimeout( run ,speed ); 
+  	if( count==times){
+      clearInterval( timerId );
+  	}
+  	
+}
+
+function play(){
+  // window.alert("OK");
+  // times = rand(20,40);
+  times = 40;
+  timerId = setTimeout( run , speed); 
+}
+
+function init(){
+	$id("btn").onclick = play;
+}
+window.onload = init;	
+</script>   
+</body>
+</html>

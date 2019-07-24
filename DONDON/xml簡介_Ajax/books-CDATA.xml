@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" ?>
+<books>
+  <book>
+    <bookId>A090</bookId>
+	  <bookName>XML精要總覽</bookName>
+	  <author>Elliotte Rusty Harol</author>
+	  <price>680</price>
+	  <category>程式設計</category>
+	  <publicDate>2001-11-01</publicDate>
+	  <publisher>O'REILLY</publisher>
+		<!-- 將ebookUrl的網址資料放入 CDATA中 -->
+	  <ebookUrl><![CDATA[http://www.gotop.com.tw/bookList.php?psn=9789578247772]]></ebookUrl>
+  </book>
+</books>

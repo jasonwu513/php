@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function rand(a,b){
+      if (a>b) {
+        max=a;
+        min=b;
+      }else {
+        min=a;
+        max=b;
+      }
+      console.log(max);
+      console.log(min);
+      var array=new Array();
+
+      // document.write("max:",max,"<br>","min:",min);
+      for (var i = 0; i <= (max-min); i++) {
+        array[i]=min+i;
+        console.log(i);
+      }
+      // return array;
+      var rand=array[Math.floor(Math.random()*(max-min+1))]
+      return rand;
+    }
+
+  document.write(rand(2,10));
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	
+function shuffle(array){
+
+var temp;
+var len=array.length;
+	for(var i=0;i<len;i++){
+		var j=Math.floor(Math.random()*len)
+		temp=array[i];
+		array[i]=array[j];
+		array[j]=temp;
+	}
+}	
+
+var arr=[11,22,33,44,55,66,77,88,99]
+
+document.write("<h2>shuffle前</h2>")
+for(var x in arr){
+	document.write(arr[x],"<br>");
+}
+
+document.write("<br>");
+shuffle(arr);
+
+document.write("<h2>shuffle後</h2>");
+for(var x in arr){
+	document.write(arr[x],"<br>");
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			list-style:none;
+		}
+		.box{
+			width: 800px;
+			margin: auto;
+			text-align: center;
+		}
+		.box>div:nth-child(n){
+			width: 194px;
+			height: 194px;
+			margin:2px;
+			background-color: #ccc;
+			float:left;
+			text-align: center;
+			line-height: 200px;
+			font-size: 25px;
+		}
+		.a6,.a7,.a10,.a11{
+			opacity: 0;
+		}
+		#checked{
+			margin-top:20px; 
+		}
+	</style>
+</head>
+<body>
+<div class="box">
+	<div id="aa1" class="a1"></div>
+	<div id="aa2" class="a2"></div>
+	<div id="aa3" class="a3"></div>
+	<div id="aa4" class="a4"></div>
+	<div id="aa12" class="a5"></div>
+	<div id="" class="a6"></div> <!-- 不跑 -->
+	<div id="" class="a7"></div> <!-- 不跑 -->
+	<div id="aa5" class="a8"></div>
+	<div id="aa11" class="a9"></div>
+	<div id="" class="a10"></div> <!-- 不跑 -->
+	<div id="" class="a11"></div> <!-- 不跑 -->
+	<div id="aa6" class="a12"></div>
+	<div id="aa10" class="a13"></div>
+	<div id="aa9" class="a14"></div>
+	<div id="aa8" class="a15"></div>
+	<div id="aa7" class="a16"></div>
+
+	<input type="button" id="checked" value="開獎囉">
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+var timerId;
+var num=0;
+var stop=0;
+var i=0;
+var time=10;
+function rand(min,max){
+	return Math.round(Math.random()*(max-min))+parseInt(min);
+}
+function moneyrand(){
+	var head=Math.floor(Math.random()*9)+1 ; 
+	var zero=Math.floor(Math.random()*4)+3 ;  //1000~10000000 中間差4個0
+	var	ten=1;
+	for(var j=0 ; j<zero ; j++){
+		ten*=10;
+	}
+	return head*ten;
+}
+function run(){	
+	num++;
+	i=num%12;
+	if(i<=11 && i>0){
+		document.getElementById("aa"+(i+1)).style.backgroundColor="rgb(255,255,0)";
+		document.getElementById("aa"+i).style.backgroundColor="#ccc";
+	}else{
+		document.getElementById("aa"+(i+1)).style.backgroundColor="rgb(255,255,0)";
+		document.getElementById("aa"+(i+12)).style.backgroundColor="#ccc";	
+	}
+	stop++;
+	time+=10;
+	console.log(stop,stoprand,i);
+	clearInterval(timerId);
+	if(stop<24 ){
+		timerId=setInterval(run,time);
+	}
+	else{
+	 	clearInterval(timerId);
+	 	document.getElementById("checked").disabled=false;
+	 	stop=0;
+	 	time=0;
+	 	document.getElementById("aa"+(i+1)).innerHTML=moneyrand();
+	}
+
+}
+
+function confirm(){
+	timerId=setInterval(run,100);
+	document.getElementById("checked").disabled=true;
+	stoprand=rand(25,45);
+	document.getElementById("aa"+(i+1)).innerHTML="";	
+}	
+function init(){
+ document.getElementById("checked").onclick=confirm;
+}
+console.log(i);
+window.onload=init;	
+</script>

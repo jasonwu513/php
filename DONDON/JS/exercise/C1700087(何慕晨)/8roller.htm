@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		td{
+			width: 150px;
+			height: 150px;
+			box-sizing: border-box;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+<br>
+<br>
+<center><button id="btn" style="width: 200px; height: 30px;">抽獎</button></center>
+<br>
+<br>
+
+	<table border="1" align="center" cellspacing="0">
+		<tr>
+			<td id="d1" class="data"></td>
+			<td id="d2" class="data"></td>
+			<td id="d3" class="data"></td>
+			<td id="d4" class="data"></td>
+		</tr>
+		<tr>
+			<td id="d12" class="data"></td>
+			<td colspan="2" rowspan="2"></td>
+			<td id="d5" class="data"></td>
+		</tr>
+		<tr>
+			<td id="d11" class="data"></td>
+			<td id="d6" class="data"></td>
+		</tr>
+		<tr>
+			<td id="d10" class="data"></td>
+			<td id="d9" class="data"></td>
+			<td id="d8" class="data"></td>
+			<td id="d7" class="data"></td>
+		</tr>
+	</table>
+	<script>
+		function rand(min,max) {
+			return Math.round(Math.random()*(max-min)) + parseInt(min);
+		}
+		function randmoney() {
+			var head =Math.floor(Math.random()*10)+1;
+			var zero=Math.floor(Math.random()*4)+3;
+			var ten=1;
+			for (var i = 0; i < zero; i++) {
+				ten*=10;
+			}
+			return head*ten;
+		}
+		var start =rand(0,12);
+		var count=0;
+		var timer;
+		var countspeed=100;
+
+		function run(){
+			start+=1;
+			if(start>12){ //start=13.14....
+				start=start%12; //start=1.2.3....
+				document.getElementById("d"+start).style.backgroundColor="yellow";
+				if(start==1){
+					document.getElementById("d12").style.backgroundColor="white";
+				}
+			}else{
+				document.getElementById("d"+start).style.backgroundColor="yellow";
+				document.getElementById("d"+(start-1)).style.backgroundColor="white";
+			}
+			// console.log(start);
+			document.getElementById("btn").disabled=true;
+			count+=1;
+			// console.log(count);
+			// console.log(stop);
+			var stop = rand(13,36);
+			countspeed+=10;
+			console.log(countspeed);
+			clearInterval(timer);
+				if (count>=stop) {
+				clearInterval(timer);
+				var money = randmoney();
+				document.getElementById("d"+start).innerHTML=money;
+				document.getElementById("btn").disabled=false;
+				count=0;
+				countspeed=100;
+				}else{
+					timer = setInterval( run, countspeed );
+				}
+
+		}
+		function runtime(){
+
+				timer = setInterval(run,countspeed);
+
+				document.getElementById("d"+start).innerHTML="";	
+		}
+		function init(){
+			document.getElementById('btn').onclick=runtime;
+
+		}
+		window.onload=init;
+	</script>
+</body>
+</html>

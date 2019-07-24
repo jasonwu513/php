@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<style type="text/css">
+*{
+    padding: 0;
+    margin: 0;
+}
+#imgView{
+  overflow:hidden;
+/*  height:80vh;*/
+  height:470px;
+  width:90vw;
+  position:absolute; 
+  margin:auto;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  outline: 1px solid red;
+}    
+#toLeft{
+  position: absolute;
+  left:5%;
+  top:40%;
+  width: 50px;
+  height: 50px;
+  color:deepPink;
+  font-size:50px;
+  font-weight:bold;
+  line-height:50px; 
+  z-index:5;
+  } 
+#toRight{
+  position: absolute;
+  left:95%;
+  top:40%;
+  width:50px;
+  height:50px;
+  color:deepPink;
+  font-size:50px;
+  font-weight:bold;
+  line-height:50px;    
+  z-index:5;
+}
+#toLeft:hover, #toRight:hover {background-color: rgba(130,130,130,0.3)}  
+#imgContainer{
+    position: absolute;
+    width:500%;
+    overflow:hidden;
+}   
+.bannerImg {width:90vw;}
+  
+</style>
+</head>
+<body>
+<div id="imgView">
+<span id="toLeft"><</span>
+<span id="toRight">></span>
+<div id="imgContainer"><img class="bannerImg" src="img_0.jpg" title="11111111"><img class="bannerImg" src="img_1.jpg" title="2222222222"><img class="bannerImg" src="img_2.jpg"  title="33333333"><img class="bannerImg" src="img_3.jpg" title="4444444444"></div>
+</div>
+   
+
+</body>
+</html>
+<script type="text/javascript">
+function $id(id){
+  return document.getElementById(id);
+};
+
+//==========window.onload
+window.onload=function(){
+    //==========toLeft.onClick
+    $id("toLeft").onclick = function (){
+      var imgContainer = $id("imgContainer");
+      imgContainer.insertBefore(imgContainer.lastChild, imgContainer.firstChild);
+    };
+    //==========toRight.onclick 
+    $id("toRight").onclick = function (){
+      var imgContainer = $id("imgContainer");
+      imgContainer.appendChild(imgContainer.firstChild);  
+    }  
+    ; 
+
+};
+
+
+</script>

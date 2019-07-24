@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+
+    身分證檢查: <input id="id_num" type="text" name="">
+    <input id="btn" type="button" name="" value="檢查">
+
+    <script type="text/javascript">
+
+    function $id(id){
+  		return document.getElementById(id);
+    }
+     
+    function lookuptable_A10(IdNo)
+    {
+      switch(IdNo.charAt(0))
+      {
+        case 'A' :  IdNo=IdNo.replace('A','10');
+              break;
+        case 'B' :  IdNo=IdNo.replace('B','11');
+              break;    
+        case 'C' :  IdNo=IdNo.replace('C','12');
+              break;
+        case 'D' :  IdNo=IdNo.replace('D','13');
+              break;
+         case 'E' :  IdNo=IdNo.replace('E','14');
+              break;         
+        case 'F' :  IdNo=IdNo.replace('F','15');
+              break;
+        case 'G' :  IdNo=IdNo.replace('G','16');   
+              break;                                  
+        case 'H' :  IdNo=IdNo.replace('H','17');
+              break;      
+        case 'I' :  IdNo=IdNo.replace('I','34');
+              break;                                  
+        case 'J' :  IdNo=IdNo.replace('J','18');
+              break;            
+        case 'K' :  IdNo=IdNo.replace('K','19');
+              break;
+        case 'L' :  IdNo=IdNo.replace('L','20');
+              break;    
+        case 'M' :  IdNo=IdNo.replace('M','21');
+              break;
+        case 'N' :  IdNo=IdNo.replace('N','22');
+              break;
+        case 'O' :  IdNo=IdNo.replace('O','35');
+              break;      
+        case 'P' :  IdNo=IdNo.replace('P','23');
+              break;
+        case 'Q' :  IdNo=IdNo.replace('Q','24');
+              break;                                  
+        case 'R' :  IdNo=IdNo.replace('R','25');
+              break;      
+        case 'S' :  IdNo=IdNo.replace('S','26');
+              break;                                  
+        case 'T' :  IdNo=IdNo.replace('T','27');
+              break;            
+        case 'U' :  IdNo=IdNo.replace('U','28');
+              break;  
+        case 'V' :  IdNo=IdNo.replace('V','29');
+              break;
+        case 'W' :  IdNo=IdNo.replace('W','32');
+              break;                                  
+        case 'X' :  IdNo=IdNo.replace('X','30');
+              break;      
+        case 'Y' :  IdNo=IdNo.replace('Y','31');
+              break;                                  
+        case 'Z' :  IdNo=IdNo.replace('Z','33');
+              break;                  
+        }
+      return IdNo;
+    }
+     
+    function isIdNo()
+    {
+        	var IdNo = $id('id_num').value;
+          var sum; 
+               
+// ==============================  檢查長度 ======================================================
+          (IdNo.length!=10) ? alert('Error : 身分證號碼長度錯誤') :         
+          ( (IdNo.charCodeAt(0) < 65)  || (IdNo.charCodeAt(0) > 90) ) ? alert('Error : 第一碼錯誤') :
+          (IdNo.charAt(1) !=1 && IdNo.charAt(1) !=2) ? alert('Error : 第二碼錯誤') : "";
+
+// ================================  算出檢查碼 ===================================================
+          
+      	   IdNo=lookuptable_A10(IdNo);   
+           sum = parseInt(IdNo[0]);            
+    	     for (var i = 1; i < IdNo.length-1; i++) 
+    	     {
+              sum=sum+parseInt(IdNo[i])*(10-i);    	    	    	
+
+    	     }
+//============================   比對  算出 的檢查碼是否和輸入的檢查碼一樣==================================
+    	     ( IdNo[IdNo.length-1] != (10-sum%10) ) ?  alert(' 檢出碼錯誤 Error') : alert('You are Pass');          
+    }
+
+    function init(){
+    	$id('btn').onclick=isIdNo;
+    }
+    window.onload=init;
+    
+    </script>
+</body>
+</html>

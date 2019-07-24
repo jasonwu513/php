@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+
+</head>
+<body>
+<form id="myForm" action="http://140.115.236.11">
+	帳號<input type="text" name="memId"><br>
+	<input type="submit" id="btnUpdate" value="update" ><br>
+	<input type="submit" id="btnDelete" value="delete" 
+	onclick="document.getElementById('myForm').action='http://www.books.com.tw'" ><br>
+</form>    
+
+入會月份
+<select id="mm">
+</select>  
+
+<script type="text/javascript">
+function $id( id ){
+	return document.getElementById(id);
+}
+
+window.onload = function (){
+  var option, text, value;
+  var mm = $id("mm");
+  for( var i=1; i<=12; i++){
+	  text = i + "月";
+	  value = i;
+	  option = new Option( text ,value);
+	  mm.add(option, 0 );
+	  // mm.add(option);	
+  }
+};	
+</script>
+</body>
+</html>

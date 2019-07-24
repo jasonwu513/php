@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+<!-- shuffle -->
+
+<script type="text/javascript">
+      function rand(min,max){   //60 , 100    
+        return Math.floor(Math.random()*(max-min)+1 + min);   
+    }
+ function shuffle(array){
+  var i,takeoutramdom,takeoutlast;
+  for (var i = array.length-1 ; i >0 ; i--) {
+    var takeoutramdom = rand(0,i-1);
+    takeoutlast=array[i];
+    array[i]=array[takeoutramdom];
+    array[takeoutramdom]=takeoutlast;
+
+  }
+  // return array;
+}
+
+var array= new Array(1,2,3,4,5);
+shuffle(array);
+document.write(array);
+
+</script>
+</body>
+</html>

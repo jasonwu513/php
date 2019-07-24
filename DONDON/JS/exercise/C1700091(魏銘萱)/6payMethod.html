@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>6payMethod</title>
+<style type="text/css">
+	*{
+		margin:0;
+		padding: 0;
+		list-style: none;
+	}
+
+	table,tr,td{
+		width: 500px;
+		margin: 0 auto;
+		border: 1px solid;
+	}
+
+	td{
+		padding: 1px 5px;
+	}
+
+	#r2,#r3{
+	 padding: 10px 0 0 10px;
+	}
+
+</style>
+</head>
+<body>
+       <table>
+       <caption>確認訂單</caption>
+       	      <tr> 
+		   	      	<td>收件人姓名 :</td>
+		   	      	<td><input type="text"></td>
+       	      </tr>
+       	      <tr>
+		   	      	<td>收件人地址 :</td>
+		   	      	<td><input type="text"></td>
+       	      </tr>
+       	      <tr>
+		   	      	<td>付款方式</td>
+		   	      	<td>
+		   	      		<div>
+		   	      			<input type="radio" name="money" id="現金" value="現金"><label for="現金">現金</label>
+		   	      			<input type="radio" name="money" id="信用卡" value="信用卡"><label for="信用卡">信用卡</label>  		 
+		   	      			<input type="radio" name="money" id="ATM轉帳" value="ATM轉帳"><label for="ATM轉帳">ATM轉帳</label>
+		   	      		</div>
+	   	      		  	<div id="r2" style="display :none";>
+	   	      		  	    信用卡號碼:<input type="text"><br>
+	   	      		  	    到期年月:<input type="text">
+	   	      		  	</div>
+	   	      		 	<div id="r3" style="display :none";>
+	   	      		  	    銀行代號:<input type="text"><br>
+	   	      		  	    扣款帳號:<input type="text">
+	   	      		  	</div>
+		   	      	</td>
+       	      </tr>
+       </table>
+
+       <script>
+                function showr1(){
+                document.getElementById("r2").style.display = "none";	
+                document.getElementById("r3").style.display = "none";	
+                }
+
+                function showr2(){
+                document.getElementById("r2").style.display = "";	
+                document.getElementById("r3").style.display = "none";
+                }
+
+                function showr3(){
+                document.getElementById("r3").style.display = "";
+                document.getElementById("r2").style.display = "none";
+                }
+
+       	        function init(){
+                document.getElementById("現金").onclick = showr1;
+                document.getElementById("信用卡").onclick = showr2;
+                document.getElementById("ATM轉帳").onclick = showr3;
+       	        }
+
+       	        window.onload = init;
+
+       </script>
+</body>
+</html>

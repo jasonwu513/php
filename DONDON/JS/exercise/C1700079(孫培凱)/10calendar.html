@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	}
+	#month{
+		width: 280px;
+		height: 280px;
+		background-color: #ccc;
+		font-size: 0;
+	}
+	#month li{
+		width: 40px;
+		height: 40px;
+		outline: 1px solid rgba(255,0,0,.5);
+		display: inline-block;
+		font-size: 16px;
+		color: #000;
+		text-align: center;
+		line-height: 40px;
+		vertical-align: top;/*不加li換行會跑版，卡很久= ="*/
+	}
+</style>
+<script type="text/javascript">
+	/*得到子元素陣列*/
+	function getChildNodes(ele){
+   		var childArr=ele.children;
+        var childArrTem=new Array();
+	    for(var i=0;i<childArr.length;i++){
+	        if(childArr[i].nodeType==1){
+	            childArrTem.push(childArr[i]);
+	        }
+	    }
+	    return childArrTem;
+	}
+
+	function getMonth(){
+		/*前置工作 & reset*/
+		var month=document.getElementById("month");
+		var childArrUl=getChildNodes(month);
+		// console.log(childArrUl[0].nodeName);
+		var childArrLi=getChildNodes(childArrUl[0]);
+		// console.log(childArrLi[0].nodeName);
+		for(var x in childArrLi){
+			childArrLi[x].innerHTML="";
+		}
+		childArrLi[0].innerHTML="日";
+		childArrLi[1].innerHTML="一";
+		childArrLi[2].innerHTML="二";
+		childArrLi[3].innerHTML="三";
+		childArrLi[4].innerHTML="四";
+		childArrLi[5].innerHTML="五";
+		childArrLi[6].innerHTML="六";
+		/*月曆內容*/
+		/*選擇月*/
+		var selectObj=document.getElementById("select");
+		var m = selectObj.options[selectObj.selectedIndex].value;
+		var dateObj=new Date(2017,m-1,15);
+
+		console.log("month=",dateObj.getMonth()+1);
+		dateObj.setDate(1);
+		var beginWeek=dateObj.getDay();
+		console.log("beginWeek=",beginWeek);
+		var days=new Date(2017,dateObj.getMonth()+1,0).getDate();/*得到該月天數*/
+		console.log("days=",days);
+		for(var i=6+1+beginWeek,j=1;i<=6+beginWeek+days;i++){
+			childArrLi[i].innerHTML=j++;
+		}
+  		
+	}
+	function init(){
+		/*今天的月份放入select*/
+		var today=new Date();
+		var select=document.getElementById("select");
+		select[today.getMonth()].selected="true";
+		
+		getMonth();
+		document.getElementById("select").onchange=getMonth;
+		
+	}
+	window.onload=init;
+</script>
+</head>
+<body>
+    <h2>2017年月曆</h2>
+	<div id="month">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<br>
+	<select id="select">
+	　<option value="1">1月</option>
+	　<option value="2">2月</option>
+	　<option value="3">3月</option>
+	　<option value="4">4月</option>
+	  <option value="5">5月</option>
+	　<option value="6">6月</option>
+	　<option value="7">7月</option>
+	　<option value="8">8月</option>
+	  <option value="9">9月</option>
+	　<option value="10">10月</option>
+	　<option value="11">11月</option>
+	　<option value="12">12月</option>
+	</select>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript">
+	function rand(min,max){
+        /*max >= 亂數 >= min*/
+        /*由於parseInt，如果參數是float會被無條件捨去*/
+    	var small = parseInt(min);
+    	var big = parseInt(max);
+    	var randNum = Math.round( Math.random()*(big-small))+small;
+    	return randNum;
+    }
+
+    function randomRGB(){
+    	var rgb="#";
+    	for(var i=0;i<3;i++){
+    		var temp=rand(0,15);
+    		if(temp==10){
+    			temp="a";
+    		}else if(temp==11){
+    			temp="b";
+    		}else if(temp==12){
+    			temp="c";
+    		}else if(temp==13){
+    			temp="d";
+    		}else if(temp==14){
+    			temp="e";
+    		}else if(temp==15){
+    			temp="f";
+    		}
+    		rgb+=temp;
+    	}
+    	return rgb;
+    }
+
+	function doSomeThing(){
+		/*reset*/
+		document.getElementById("ans").innerHTML="";
+		/*main logic*/
+		document.getElementById("hr").style.display = "";
+		var ans=document.getElementById("ans");
+		var number=rand(4,7);
+		console.log("number=",number);
+		var value=0;
+		for (var i = 0; i < number; i++) {
+			value=rand(0,9);
+			console.log("value=",value)
+			var s=document.createElement("span");
+			s.style.color=randomRGB();
+			var t=document.createTextNode(value);
+			s.appendChild(t);
+			ans.appendChild(s);
+		}
+	}
+
+	function init(){
+		document.getElementById("hr").style.display = "none";
+		document.getElementById("do").onclick = doSomeThing;
+	}
+	window.onload=init;
+</script>
+</head>
+<body>
+    <h2>Javascript</h2>
+    <input type="button" id="do" value="按我">
+    <hr id="hr">
+    <span id="ans"></span>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+<div style="background-color:lightBlue">
+現在時刻: <span id="timePanel" style="color:blue"></span>
+</div>
+<script>
+function $id(id){
+  return document.getElementById(id);
+}
+function showTime(){
+	var today = new Date();
+	var str = today.getHours()+ " : " +  today.getMinutes() + " : " + today.getSeconds() ;
+	$id("timePanel").innerHTML = str;
+}
+
+function init(){
+    showTime();
+	setTimeout( showTime , 1000);
+}
+window.onload = init;
+
+// var today = new Date();
+// var hours = today.getHours();
+// if( hours<12){
+// 	document.write("早安");	
+// }else if( hours<18){
+// 	document.write("午安");	
+// }else{
+// 	document.write("晚安");	
+// }
+
+</script>    
+</body>
+</html>

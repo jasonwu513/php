@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>LOTTO</title>
+	<style type="text/css" media="screen">
+
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		table{
+			margin: 20px auto;
+		}
+		.aa{
+			width: 100px;
+			height: 100px;
+			background-color: #ccc;
+			border: 1px solid #fff;
+		}
+
+		td{
+			line-height: 100px;
+			font-size: 18px;
+			text-align: center;
+			font-family: arial;
+			color: #fff;
+		}
+
+		#start{
+			margin: auto;
+			vertical-align: middle;
+			display: block;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			border: 5px solid #ccc;
+			background-color: #888;
+			color: #ccc;
+			cursor: pointer;
+			font-family: 微軟正黑體;
+			font-size: 15px;
+			transition: .5s;	
+		}
+		#start:hover{
+			background-color: #f79;
+			border: 5px solid #fdd;
+			color: #fdd;
+		}
+
+		
+
+	</style>
+</head>
+<body>
+	<table cellspacing="0">
+		<tr>
+			<td id="a0" class="aa"></td>
+			<td id="a1" class="aa"></td>
+			<td id="a2" class="aa"></td>
+			<td id="a3" class="aa"></td>
+		</tr>
+		<tr>
+			<td id="a11" class="aa"></td>
+			<td colspan="2" rowspan="2" class="bb" id="index">
+				<input type="button" id="start" value="抽獎">
+			</td>
+			<td id="a4" class="aa"></td>
+		</tr>
+		<tr>
+			<td id="a10" class="aa"></td>
+			<td id="a5" class="aa"></td>
+		</tr>
+		<tr>
+			<td id="a9" class="aa"></td>
+			<td id="a8" class="aa"></td>
+			<td id="a7" class="aa"></td>
+			<td id="a6" class="aa"></td>
+		</tr>
+	</table>
+
+	<script type="text/javascript">
+		var timerId;
+		var count;
+		var i = 0;
+
+		function rand(min, max){
+			return Math.round(Math.random()*(max-min)) + parseInt(min);
+		}
+
+		function run(){
+			document.getElementById("start").disabled=true;
+			
+			document.getElementById("a"+i).style.backgroundColor="#ccc";
+			i++;
+			i = i%12;
+			document.getElementById("a"+i).style.backgroundColor="#f79";
+			
+			count--;
+			clearInterval(timerId);
+			timerId = setInterval(run,200-(count*10));
+			if(count==0){
+				clearInterval(timerId);
+				document.getElementById("start").disabled="";
+				money = rand(1,10000)*1000;
+				document.getElementById("a"+i).innerHTML="$"+money;
+			}
+		}
+
+		function start(){
+			count = rand(25,30);
+			timerId = setInterval(run,200-(count*10));
+			document.getElementById("a"+i).innerHTML="";
+		}
+
+		function init(){
+			document.getElementById("start").onclick = start;
+		}
+		window.onload= init;
+	</script>
+
+
+
+</body>
+</html>

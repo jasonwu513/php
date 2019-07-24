@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>點小圖秀大圖</title>
+
+</head>
+
+<body>
+<div style="width:202px;height:185px;">
+<img  id="large" src="images/big/M1_001.gif">
+</div>
+<div id="smallPanel">
+<img src="images/small/M1_SP_001.gif" class="small"/>
+<img src="images/small/M1_SP_002.gif" class="small"/>
+<img src="images/small/M1_SP_003.gif" class="small"/>
+<img src="images/small/M1_SP_004.gif" class="small"/>
+<img src="images/small/M1_SP_005.gif" class="small"/>
+</div>
+</body>
+</html>
+<script>
+function showLarge(e){
+  var small = e ? e.target : event.srcElement;
+  document.getElementById("large").src = small.src.replace("small","big").replace("_SP","");
+}
+
+function init(){
+  var imgs = document.querySelectorAll("#smallPanel img");
+  var img_obj = document.querySelector("#smallPanel img");
+  alert( img_obj.src);
+
+
+  for( var i=0; i<imgs.length; i++){
+  	imgs[i].onclick = showLarge;
+  }
+}
+
+window.onload = init;
+</script>

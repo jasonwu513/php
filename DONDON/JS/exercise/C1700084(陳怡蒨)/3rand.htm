@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>寫一個類似PHP中rand(min,max)的函數</title>
+</head>
+<body>
+<script type="text/javascript">
+
+	function rand(min,max){			/*min,min+10000*/
+
+		var i=Math.floor((max-min)/10);		/*算出max和min之間有幾個十倍?*/
+
+		do{
+		  period = Math.floor(Math.random()*1000);		    /*取一0~999之間的亂數*/
+		}while(period>i);									/*如大於i則再做一遍*/
+
+		do{
+			var num = parseInt(Math.random()*10)+period*10+min;
+		}while(num>max);
+
+		// document.write(period,"<br>");
+		document.write(num);
+	}
+
+	rand(0,20000);
+
+</script>
+</body>
+</html>

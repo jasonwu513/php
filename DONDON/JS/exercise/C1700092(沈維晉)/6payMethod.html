@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table border=1>
+		<tr>
+			<td>收件人姓名:</td>
+			<td><input type="text" name=""></td>
+		</tr>
+		<tr>
+			<td>收件人地址:</td>
+			<td><input type="text" name=""></td>
+		</tr>
+		<tr>
+			<td>付款方式</td>
+			<td><input type="radio" name="detail" value="">現金
+				<input type="radio" name="detail" value="">信用卡
+				<input type="radio" name="detail" value="">ATM轉帳
+				<div id="CreadCard" style="display:none">
+					信用卡號碼:<input type="text" name="">
+					<br>
+					到期年月:<input type="text" name="">
+				</div>
+				<div id="Atm" style="display:none">
+					銀行代號:<input type="text" name="">
+					<br>
+					扣款帳號:<input type="text" name="">
+				</div>
+			</td>
+		</tr>
+	</table>
+
+</body>
+</html>
+
+	<script type="text/javascript">
+		function CashBox(){ //點選現金時，信用卡與ATM都隱藏
+			document.getElementById("CreadCard").style.display = "none";
+			document.getElementById("Atm").style.display = "none";
+		}
+		function CreadCardBox(){ //點選現金時，ATM資訊隱藏
+			document.getElementById("CreadCard").style.display = "";
+			document.getElementById("Atm").style.display = "none";
+
+		}
+		function AtmBox(){ //點選ATM時，現金資訊隱藏
+			document.getElementById("Atm").style.display = "";
+			document.getElementById("CreadCard").style.display = "none";
+		}
+
+
+
+		function init(){
+			document.getElementsByName("detail")[0].onclick=CashBox;
+			document.getElementsByName("detail")[1].onclick=CreadCardBox;
+			document.getElementsByName("detail")[2].onclick=AtmBox;
+		}
+
+		window.onload=init;
+	</script>

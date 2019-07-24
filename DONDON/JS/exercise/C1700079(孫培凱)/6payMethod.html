@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript">
+	function hitted(){
+		document.getElementById("ans").innerHTML="";
+		var txtBox1=document.createElement("input");
+		txtBox1.type="text";
+		var txtBox2=document.createElement("input");
+		txtBox2.type="text";
+		var br=document.createElement("br");
+		var title1=document.createTextNode("信用卡號碼:");
+		var title2=document.createTextNode("到期年月:");
+		var title3=document.createTextNode("銀行代號:");
+		var title4=document.createTextNode("扣款帳號:");
+
+		if(document.getElementById("w2").checked){
+			document.getElementById("ans").appendChild(title1);
+			document.getElementById("ans").appendChild(txtBox1);
+			txtBox1.style.width="153px";
+			document.getElementById("ans").appendChild(br);
+			document.getElementById("ans").appendChild(title2);
+			document.getElementById("ans").appendChild(txtBox2);
+		}else if(document.getElementById("w3").checked){
+			document.getElementById("ans").appendChild(title3);
+			document.getElementById("ans").appendChild(txtBox1);
+			document.getElementById("ans").appendChild(br);
+			document.getElementById("ans").appendChild(title4);
+			document.getElementById("ans").appendChild(txtBox2);
+		}else{
+			
+		}
+	}
+
+	function init(){
+		document.getElementById("w1").onclick=hitted;
+		document.getElementById("w2").onclick=hitted;
+		document.getElementById("w3").onclick=hitted;		
+	}
+	window.onload=init;
+</script>
+</head>
+<body>
+    <table border="1"  cellpadding="5">
+    	<caption>確認訂單</caption>
+    	<tr>
+    		<td>收件人姓名</td>
+    		<td><input type="text"></td>
+    	</tr>
+    	<tr>
+    		<td>收件人地址</td>
+    		<td><input type="text"></td>
+    	</tr>
+    	<tr>
+    		<td>付款方式</td>
+    		<td>
+    			<input type="radio" name="way" value="1" id="w1">現金
+    			<input type="radio" name="way" value="2" id="w2">信用卡
+    			<input type="radio" name="way" value="3" id="w3">ATM轉帳
+    			<div id="ans"></div>
+    		</td>
+    	</tr>
+    </table>
+</body>
+</html>

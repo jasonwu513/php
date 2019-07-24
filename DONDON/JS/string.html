@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>string</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+
+<script type="text/javascript">
+var str="abcdeabcde";
+
+document.write("<br>length : " , str.length, "<br>" );
+document.write("toUpperCase() : " , str.toUpperCase(), "<br>" );
+
+document.write("<br>indexOf('cd') : " , str.indexOf('cd'), "<br>" ); //2
+document.write("indexOf('cdd') : " , str.indexOf('cdd'), "<br>" ); //-1
+
+
+document.write("<br>lastIndexOf('cd') : " , str.lastIndexOf('cd'), "<br>" ); //7
+document.write("lastIndexOf('cdd') : " , str.lastIndexOf('cdd'), "<br>" ); //-1
+
+document.write("<br>match('cd') : " , str.match('cd'), "<br>" ); //cd
+document.write("match('cdd') : " , str.match('cdd'), "<br>" ); //null
+
+document.write("<br>charAt(3) : " , str.charAt(3), "<br>" ); //d  , str[3]
+document.write("charCodeAt(3) : " , str.charCodeAt(3), "<br>" ); //100
+
+document.write("<br>substr(2,6) : " , str.substr(2,6), "<br>" ); //cdeabc
+document.write("substring(2,6) : " , str.substring(2,6), "<br>" ); //cdea
+
+document.write("<br>replace('cd','QQQ') : " , str.replace('cd','QQQ'), "<br>" );
+
+str="aa,bb,cc:dd,ee,ff";
+var arr = str.split(",");
+for(var i in arr){
+	document.write( i , ":" , arr[i].fontcolor("deepPink").bold().italics() , "<br>");
+}
+
+
+var file="Sara.smile.png";
+var file="Sara.cry.png";
+var file="Sara.png";
+var dotPos = file.lastIndexOf(".");
+var fileName = file.substring(0, dotPos);
+var fileExt = file.substr(dotPos+1); //若省略要取長度多少，則取到最後一碼
+document.write("主檔名: " , fileName , "<br>");
+document.write("副檔名: " , fileExt , "<br>");
+</script>    
+</body>
+</html>

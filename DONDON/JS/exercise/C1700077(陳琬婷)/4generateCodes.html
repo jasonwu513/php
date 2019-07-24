@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS作業三</title>
+	<style>
+		.number{
+			font-size: 60px;
+			font-family: "arial";
+		}
+	</style>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		function rand(min,max){
+			var rNumber =Math.floor(Math.random()*(max-min+1))+min;
+			return rNumber;
+		}
+
+		function color(){
+			var r=rand(0,200);
+			var g=rand(0,200);
+			var b=rand(0,200);
+			return "rgb("+r+","+g+","+b+")";
+
+		}
+	// 	function getRandomColor(){
+ //    	return "hsb("+ Math.random()+",1,1)";
+ // }
+
+		var several =rand(4,7); //產生4-7個
+		for(var i=0; i<several;i++){
+			var num=rand(0,9); 
+			document.write("<span class='number' style=color:",color(),";>",num,"</span>");
+		}
+	</script>
+</body>
+</html>

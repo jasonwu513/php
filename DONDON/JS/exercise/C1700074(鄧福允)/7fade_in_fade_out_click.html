@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>HW7</title>
+</head>
+<body>
+<center>
+<input type="button" id="btnInOut" value="淡出"><br>
+<img src="melon.gif" alt="小玉" id="img1" style="opacity:1;"> 	
+</center>
+</body>
+</html>
+<script>
+
+var img = document.getElementById("img1");
+var btn = document.getElementById("btnInOut");
+var timerId;
+
+function changeOpacity(){
+	btn.disabled = "true";
+
+	if(btn.value == "淡出"){
+		img.style.opacity -= 0.05;
+		console.log(btn.value);
+		console.log(img.style.opacity);
+		if(img.style.opacity <= 0){
+			btn.value = "淡入";
+			clearInterval(timerId);
+			btn.disabled = "";
+		}
+	}
+	else{ //typeof(opacity) = String, += 會變串接字串
+		img.style.opacity = Number(img.style.opacity) + 0.05;
+		console.log(btn.value);
+		console.log(img.style.opacity);
+		if(img.style.opacity >= 1){
+			btn.value = "淡出";
+			clearInterval(timerId);
+			btn.disabled = "";
+		}
+	}
+}
+
+function fadeInOut(){
+	timerId = setInterval(changeOpacity,100);
+}
+
+function init(){
+	btn.onclick = fadeInOut;
+}
+
+window.onload = init;
+
+</script>

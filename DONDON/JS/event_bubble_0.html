@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>event capture</title>
+<style>
+form {background-color:#FFC}
+</style>
+</head>
+<body id="myBody">
+<p>1111111111111</p>    
+<p>1111111111111</p>
+<p>1111111111111</p>
+
+<form id="myForm">
+  <p>這裡是表單</p>
+  <p>這裡是表單</p>
+  <p>這裡是表單</p>
+  <input id="btn" type="button" value="click me">
+  <p>這裡是表單</p>
+  <p>這裡是表單</p>
+  <p>這裡是表單</p>
+</form>
+<script>
+function $id(id){
+	return document.getElementById(id);
+}
+
+function btn_click(e){
+  window.alert("按鈕  被按");
+  e ? e.stopPropagation() : event.cancelBubble = true;
+}
+
+function myForm_click(e){
+  window.alert("myForm  被按");
+}
+
+function myBody_click(e){
+  window.alert("myBody  被按");
+}
+
+function init(){
+  $id("btn").onclick = btn_click;
+  $id("myForm").onclick = myForm_click;
+  $id("myBody").onclick = myBody_click;
+}
+window.onload=init;
+</script>
+</body>
+</html>

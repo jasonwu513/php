@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<center>
+<input type="button" id="btnInOut" value="淡出"><br>
+
+<img src="melon.gif" alt="小玉" id="img1" style="opacity:1"> 	
+</center>	
+
+</body>
+</html>
+
+
+<script type="text/javascript">
+var opacity=1;
+var timerId;
+
+function fadeout(){
+	opacity-=0.05;
+	document.getElementById("img1").style.opacity=opacity;
+	if(opacity<=0){  //設定停止的位置，如果沒設定系統會無止境的計算
+	clearInterval(timerId); 
+	document.getElementById("btnInOut").value="淡入";
+	document.getElementById("btnInOut").disabled=false;
+	}
+	console.log(opacity);
+}	
+ function fadein(){
+ 	opacity+=0.05;
+ 	document.getElementById("img1").style.opacity=opacity;
+ 	if(opacity>=1){  //設定停止的位置，如果沒設定系統會無止境的計算
+ 	clearInterval(timerId); 
+ 	document.getElementById("btnInOut").value="淡出";
+ 	document.getElementById("btnInOut").disabled=false;
+ 	}
+}
+
+function count(){
+	var temp=document.getElementById("btnInOut").value;
+	if(temp =="淡出"){
+		timerId=setInterval(fadeout,100);
+		document.getElementById("btnInOut").disabled=true;
+	}else{
+		timerId=setInterval(fadein,100);
+		document.getElementById("btnInOut").disabled=true;
+	}
+}
+
+function init(){
+	document.getElementsByTagName("input")[0].onclick=count;
+}
+
+window.onload=init;	
+</script>

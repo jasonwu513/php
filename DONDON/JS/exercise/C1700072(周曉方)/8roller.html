@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	
+
+table{
+		/*width: 960px;*/
+		border-collapse: collapse;
+		margin: auto;
+    } 
+	td{
+
+		width: 150px;
+		height: 150px;
+		font-size: 0;
+		text-align: center;
+		background: yellow;
+		opacity: 0;
+	}	
+	h2{
+		text-align: center;
+	}
+	input{
+		display: inline-block;
+		text-align: center;
+		font-size: 48px;	
+		width: 250px;
+		height: 80px;	
+		margin: 20px;
+		border-radius: 10px;
+		margin-left: 150px;
+		
+
+	}
+	.box{
+		width:  960px;
+		margin: auto;
+	}
+</style>
+
+</head>
+<body>
+<div class="box">
+	<input type="button" id="btnInOut" value="GO">
+	<input type="button" id="one_more_time" value="再玩一次">
+</div>
+<br>
+
+	<table border="1">
+		<tr>
+			<td id="t1">1</td>
+			<td id="t2">2</td>
+			<td id="t3">3</td>
+			<td id="t4">4</td>
+		</tr>
+		<tr>
+		<td id="t12">12</td>
+		<td rowspan="2" colspan="2"></td>
+		<!-- <td></td> -->
+		<td id="t5">5</td>
+	</tr>
+	<tr>
+		<td id="t11">11</td>
+		<!-- <td colspan="2"></td> -->
+		<!-- <td></td> -->
+		<td id="t6">6</td>
+	</tr>
+	<tr>
+		<td id="t10">10</td>
+		<td id="t9">9</td>
+		<td id="t8">8</td>
+		<td id="t7">7</td>
+	</tr>
+	</table>
+    <h2 id="money"></h2>
+	
+    <script type="text/javascript">
+    	
+var num=-1;
+var timerId;
+var opacity=1;
+var delay=0;
+var tds=document.getElementsByTagName('td');
+
+function rand(min,max){    		
+    		var tmp=(Math.floor(Math.random()*(max-min) +1 + min));  	
+    		return tmp;
+		}
+function color_ball(num){
+	var ball_pos='t'+ num;
+	var p_ball_pos='t'+(num-1);      
+    var ball=document.getElementById(ball_pos);
+    var ball_t12=document.getElementById('t12');
+    var p_ball=document.getElementById(p_ball_pos);
+
+    ball.style.opacity = 1;	 
+    if(num==1)
+    { 
+	   ball_t12.style.opacity = 0;	
+	}   
+	else
+	{   
+		p_ball.style.opacity = 0;	
+	 }
+	 
+	
+
+}
+
+function go()
+{	
+	num=num+1;		
+	color_ball(num%12+1);
+
+	if(num>=rand(30,100))
+	{
+
+	   clearInterval(timerId);
+	   document.getElementById('money').innerHTML='中獎:'+ rand(1000, 10000000)+'元';
+	}
+}
+
+function clear()
+{
+	num=-1;
+	for (var i = 0; i < tds.length; i++) {
+		tds[i].style.opacity=0;
+	}
+
+}
+function roll()
+{
+	
+	timerId=setInterval(go, 80);	
+}
+function init(){
+  document.getElementById("btnInOut").onclick = roll;
+  document.getElementById("one_more_time").onclick = clear;
+}
+    	window.onload=init;
+    </script>
+</body>
+</html>

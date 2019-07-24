@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>document</title>
+</head>
+<body>
+<div>
+現在位置 : <span id="curPos"></span> 	
+</div>
+
+<p>
+搜尋<input type="text" name="sData">
+<input type="button" value="查詢">	
+</p>
+
+<!-- <p>
+搜尋<input type="text" name="sData">
+<input type="button" value="查詢">	
+</p> -->
+<script type="text/javascript">
+	// document.title = "董董的快樂天空";
+	// document.bgColor = "pink";
+
+var obj = document.getElementById("curPos");
+obj.innerHTML = "首頁>><i><b>會員專區</b></i>";
+obj.style.color="deepPink";
+obj.style.fontSize="30px";
+obj.style.borderBottomStyle = "dotted";
+
+var objs = document.getElementsByName("sData");
+objs[0].value = "請輸入關鍵字";
+objs[0].style.color = "grey";
+objs[0].style.borderRadius="10px";
+
+document.getElementsByTagName("div")[0].style.visibility = "hidden";
+
+</script>    
+</body>
+</html>

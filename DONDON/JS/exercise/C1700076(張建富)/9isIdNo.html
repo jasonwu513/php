@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+
+<h2>檢查身份證字號</h2>
+身份證檢查<input type="text" id="UID" name="" value="">
+<input type="submit" id="btn" name="" value="檢查">
+<div id="anser"></div>
+
+<script>
+function $id(id){
+	return document.getElementById(id);
+}
+
+function eng(x){
+	var arr = new Array("10","11","12","13","14","15","16","17","34","18","19","20","21","22","35","23","24","25","26","27","28","29","32","30","31","33");
+	var Q = arr[x-65];
+	return Q;
+}
+
+function checkid(){
+	var total=0;
+	var temp = $id("UID").value;
+	temp = temp.toUpperCase();
+	if(temp.length != 10){//長度不是10就OUT
+		$id("anser").innerHTML = "字數不正確";
+	}else if(temp.charCodeAt(0) < 65 || temp.charCodeAt(0) > 90){ // 取第一個字轉ASCILL來比對 不在65(大寫A)到90(大寫Z)就OUT
+		$id("anser").innerHTML = "第1個字不是英文";
+	}else if(temp.charAt(1) !=1 && temp.charAt(1) !=2){//第2個字不是1 or 2就Out
+		$id("anser").innerHTML = "第2個字必須是1或2";
+	}else if(isNaN(temp.substr(2))){
+		$id("anser").innerHTML = "第2個字後的不是數字";
+	}else{
+		var first = eng(temp.charCodeAt(0));
+		console.log(first);
+		temp = temp.replace(temp.charAt(0),first);
+		console.log(temp);
+        temp = temp.split("");
+		for(var i=1; i<=9; i++){
+			// total += temp[i] * (10-i);
+			total += temp[i] * (10-i);
+			console.log(temp[i]);
+		}
+		total += parseInt(temp[0]);
+		console.log(temp.charAt(temp.length-1));
+		console.log(total%10);
+		if(temp.charAt(temp.length-1) == (10-total%10)){
+			$id("anser").innerHTML = "身份證字號正確";
+		}else{
+			$id("anser").innerHTML = "身份證字號錯誤";
+		}
+
+	}
+
+}
+
+function init(){
+	// setInterval(timerun , 1000);
+	$id("btn").addEventListener("click", checkid , false);
+}
+window.onload = init;
+</script>    
+</body>
+</html>

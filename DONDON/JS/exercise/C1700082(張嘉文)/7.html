@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Fade in, Fade out(onclick)</title>
+</head>
+<body>
+	<center>
+	<input type="button" id="btnInOut" value="淡出"><br>
+	<img src="melon.gif" alt="小玉" id="img1" style="opacity: 1">
+	</center>
+	<script>
+		var opacity=1;
+		var timerId;
+
+		function fadeout(){
+			var img1 = document.getElementById("img1");
+			opacity -= 0.05;
+			btnInOut.disabled=true;
+
+			img1.style.opacity = opacity;
+			if (opacity <= 0) {
+				clearInterval(timerId);
+				btnInOut.disabled=false;				
+			}			
+			document.getElementById("btnInOut").value="淡入";
+
+			console.log( opacity );			
+		}
+
+		function fadein(){
+			var img1 = document.getElementById("img1");
+			opacity += 0.05;
+			btnInOut.disabled=true;
+
+			img1.style.opacity = opacity;
+			if (opacity >= 1) {
+				clearInterval(timerId);
+				btnInOut.disabled=false;
+			}
+			document.getElementById("btnInOut").value="淡出";
+			console.log( opacity );
+		}
+		
+		// function start(){
+		// 	var btn=document.getElementById("btnInOut");
+		// 	if(btn.value=="淡出"){
+		// 	timerId = setInterval(fadeout,100);
+		// 	}
+		// 	else{
+		// 		timerId = setInterval(fadein,100);
+		// 	}
+		// }
+
+		function start(){
+			if(opacity == 1){
+			timerId = setInterval(fadeout,100);
+			}else{
+				timerId = setInterval(fadein,100);
+			}
+		}
+
+		function init(){
+			document.getElementById("btnInOut").onclick=start;
+			
+		}
+		window.onload=init;
+
+	</script>
+
+
+</body>
+</html>
+	

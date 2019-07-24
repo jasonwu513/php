@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+   
+    
+     table tr td{
+        
+        width: 250px;
+        height: 150px;
+     }
+
+</style>
+</head>
+<body>
+
+
+	<h2>跑的範圍 :1~20 格。</h2>
+    <h3>跑<spna id="sp"></spna>格</h3>
+    <table border="1">
+    <caption><input type="button" id="btn" value="抽獎"></caption>
+        <tr>
+            <td id="d0"></td><td id="d1"></td><td id="d2"></td><td id="d3"></td>
+        </tr>
+        <tr>
+            <td id="d11"></td><td id="mid"></td><td id="mid"></td><td id="d4"></td>
+        </tr>    
+        <tr>
+            <td id="d10"></td><td id="mid"></td><td id="mid"></td><td id="d5"></td>
+        </tr>
+         <tr>
+            <td id="d9"></td><td id="d8"></td><td id="d7"></td><td id="d6"></td>
+        </tr> 
+
+    </table>
+
+
+
+
+    <script type="text/javascript">
+        var i=0;
+        var j=0;
+        var timeId;
+
+
+
+        function nonolamigo(min,max){
+         return Math.round(Math.random()*(max-min))+min;
+        
+        }        
+
+
+
+
+
+
+        function init(){
+        document.getElementById("btn").onclick=uyuttghn;
+        }
+
+        function gogoamigo(){
+            i++;
+            
+            i %= 12;
+
+                if(i>=1&&i<12){
+                document.getElementById("d"+(i)).style.backgroundColor="#af0";
+                document.getElementById("d"+(i-1)).style.backgroundColor="#fff";
+                }else{
+                    document.getElementById("d"+(i)).style.backgroundColor="#af0";
+                    document.getElementById("d11").style.backgroundColor="#fff";
+                }
+
+                // ===========================================================
+            j++;
+            if(j==stop){
+                clearInterval(timeId);
+                j=0;
+
+            }
+            console.log(j,stop);
+                         
+
+        }
+
+
+        function uyuttghn(){
+           timeId=setInterval(gogoamigo,100);
+           stop=nonolamigo(12,50);
+
+        }    
+
+
+
+        window.onload=init;
+      
+    </script>
+
+
+    </body>
+</html>
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	輸入最大值<input type="number" id="max">
+	輸入最小值<input type="number" id="min">
+	<input type="submit" value="送出" id="submit">
+	亂數值為<span id="result"></span>
+	<script type="text/javascript">
+		function rand(min,max) {
+			return Math.round(Math.random()*(max-min)) + parseInt(min);
+		}
+		function press(){
+			var max=document.getElementById("max").value;
+			var min=document.getElementById("min").value;
+			document.getElementById("result").innerHTML=rand(min,max);
+		}
+		function init(){
+			document.getElementById("submit").onclick=press;
+		}
+		window.onload=init;
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>event handler</title>
+
+</head>
+<body>
+<input type="button" name="btn" value="10+20=??" onclick="showAns();window.alert('OK??');"><br>    
+<input type="button" name="btn" value="10+20=??"><br>
+<input type="button" name="btn" value="10+20=??"><br>
+<script type="text/javascript">
+function showAns(){   
+	var a=10; 
+	var b=20; 
+	window.alert(a+b);
+}	
+
+function forFun(){
+	window.alert("^_____________^");
+	// var btn2 = document.getElementsByName("btn")[2];
+	// btn2.removeEventListener("click" , forFun , false);
+}
+
+function init(){
+	var btn1 = document.getElementsByName("btn")[1];
+	btn1.onclick = showAns;
+	btn1.onclick = forFun;
+
+	var btn2 = document.getElementsByName("btn")[2];
+	btn2.addEventListener("click" , showAns , false);
+	btn2.addEventListener("click" , forFun , false);
+}
+
+window.onload = init;
+
+</script>
+</body>
+</html>

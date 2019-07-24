@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作業五-Math、Array、函數練習</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arr = new Array(11,22,33,44,55,66,77,88,99);
+		function shuffle(array){
+			for(var i=0; i<array.length; i++){
+				var j=Math.floor(Math.random()*array.length);
+				var temp=array[i];
+				array[i]=array[j];
+				array[j]=temp;
+			}
+			return array;
+		}
+
+		document.write("打亂後新陣列=",shuffle(arr));
+
+
+	</script>
+	
+	
+</body>
+</html>

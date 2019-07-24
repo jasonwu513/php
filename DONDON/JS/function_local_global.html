@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>function user-defined</title>
+<script type="text/javascript" src="BD101G1.js"></script>
+
+
+</head>
+<body>
+<script type="text/javascript">
+var a = 10;  //全域 : a:100   ,b:20 , d:400
+b = 20;
+
+function forFun(mm,kk){  
+  var c=30;  
+  a = 100;
+  c = 300;
+  d = 400;
+}
+
+forFun(888);
+
+document.write("a : ", a ,"<br>"); //100
+document.write("b : ", b ,"<br>"); //20
+
+// document.write("c : ", c ,"<br>");  //error
+document.write("d : ", d ,"<br>");
+// document.write("mm : ", mm ,"<br>");//error
+document.write( "<hr>");
+
+
+
+var i = 1000;  //i:1000
+document.write( "10+20+30 = " , sum(10,20,30) , "<br>");
+document.write( "i = " , i , "<br>");
+</script>    
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		td{
+			width:100px;
+			height:100px;
+			text-align: center;
+			font-size:24px
+		}
+	</style>
+</head>
+<body>
+	<input type="button" id="btn" value="開獎">
+	<table border="1">
+		<tr>
+			<td id="a1"></td>
+			<td id="a2"></td>
+			<td id="a3"></td>
+			<td id="a4"></td>
+		</tr>
+
+		<tr>
+			<td id="a12"></td>
+			<td colspan="2" rowspan="2"></td>
+			<td id="a5"></td>
+		</tr>
+		<tr>
+			<td id="a11"></td>
+			<td id="a6"></td>
+		</tr>
+		<tr>
+			<td id="a10"></td>
+			<td id="a9"></td>
+			<td id="a8"></td>
+			<td id="a7"></td>
+		</tr>
+	</table>
+
+
+
+
+
+	<script type="text/javascript">
+		var timerid;
+		var num=0;
+		var stop;
+		var i=0;
+		var spd=100;
+
+		function rand(min,max){	
+				return  Math.floor(Math.random() * (max - min + 1) + min);
+				}
+
+
+		function run(){
+			num++;
+			i=num%12;
+			if(i<=11 && i>0){
+				document.getElementById("a"+(i+1)).style.backgroundColor="yellow";
+				document.getElementById("a"+i).style.backgroundColor="white";
+			}else{
+				//i=0時進入
+				document.getElementById("a"+(i+1)).style.backgroundColor="yellow";
+				document.getElementById("a12").style.backgroundColor="white";
+			}
+			document.getElementById("btn").disabled="true";
+			console.log(stop);
+
+			
+			if(num != stop){
+				spd+=10;
+				clearInterval(timerid);
+				timerid = setInterval(run , spd);
+			}else{
+				clearInterval(timerid);
+				document.getElementById("btn").disabled="";
+				document.getElementById("a"+(i+1)).innerHTML=rand(1000,10000000);
+				num = 0;
+				spd=100;
+			}
+			// if(num == stop){ 
+			// 	money=all(); 
+			// 	clearInterval(timerid);
+			// 	document.getElementById("btn").disabled="";
+			// 	document.getElementById("a"+(i+1)).innerHTML=money;
+			// 	num = 0;
+			// }
+		}
+		
+		
+		function box(){
+
+			document.getElementById("a"+(i+1)).innerHTML=""; //清除檯面上的金額
+			document.getElementById("a"+(i+1)).style.backgroundColor="white";
+			timerid = setInterval(run , spd);
+			stop = rand(20,60);
+
+		}
+
+		function init(){
+			document.getElementById("btn").onclick = box ;
+		}
+
+		window.onload = init;
+
+
+	</script>
+</body>
+</html>

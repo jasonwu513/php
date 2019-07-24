@@ -156,14 +156,10 @@ include("./lib/Parsedown.php");
 
 
 
-// $path    = './';
-// $files = scandir($path);
 
-
-$dirArr = glob('./*');
 
 function globDir($dirname, $type=''){
-$ignoreFile = ["lib","css"];
+$ignoreFile = ["lib","css","DONDON"];
 $ignoreFileLength = count($ignoreFile);
 
     
@@ -211,16 +207,15 @@ $ignoreFileLength = count($ignoreFile);
 
 globDir('.');
 
-$basename = basename(__FILE__); 
-echo $basename;
-$Parsedown = new Parsedown();
-$markdownFile = fopen ( basename(__FILE__, '.php') . '.md'  , 'r');
-echo $Parsedown->text(fread($markdownFile,filesize(basename(__FILE__, '.php') . '.md')));
 
 
+
+include_once("./include/footerMarkdown.php");
 
 
 ?>
+
+
 </body>
 </html>
 

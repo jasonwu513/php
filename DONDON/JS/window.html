@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>window</title>
+
+</head>
+<body>
+<!-- <button><img src="setting.ico" width="20">level</button> -->
+
+<!-- <h2>刪除書籍資料</h2>
+書號 <input type="text" name="psn">
+<input type="button" value="刪除"<br> -->
+
+
+<input type="button" value="課表_location.href" onclick="location.href='http:140.115.236.11'"><br>
+<input type="button" value="課表_location.replace()" onclick="location.replace('http:140.115.236.11')"><br>
+<input type="button" value="課表_window.open()" onclick="window.open('http:140.115.236.11','myWin')"><br>
+
+<br>
+<br>
+<hr>
+
+<h2>刪除書籍資料</h2>
+<input type="button"  value="刪除" onclick="del()">
+
+
+<br>
+<br>
+<br>
+<hr>
+
+<input type="button" value="列印" onclick="window.print();"><br>
+訂單編號: 10705010000003
+<p>product 01</p>
+<p>product 02</p>
+<p>product 03</p>
+<p>product 04</p>
+<p>product 05</p>
+<p>product 06</p>
+<p>product 07</p>
+<p>product 08</p>
+<p>product 09</p>
+<p>product 10</p>
+<p>product 11</p>
+<p>product 12</p>
+<p>product 13</p>
+<p>product 14</p>
+<p>product 15</p>
+<p>product 16</p>
+<p>product 17</p>
+<p>product 18</p>
+<p>product 19</p>
+<p>product 20</p>    
+<script>
+function del(){
+	var psn = prompt("請輸入書籍號碼");  //data
+	if( psn != null){
+		if( confirm("確定刪除書號" + psn + "嗎?") == true){//true false
+			location.href="http://140.115.236.11";
+		}
+	}
+}	
+</script>
+</body>
+</html>

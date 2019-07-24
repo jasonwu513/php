@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>select object Examples</title>
+
+</head>
+<body>
+<form>
+班級
+<select id="teacher" >	
+	<option value="DoDo">AA101</option>
+	<option value="楊宏文">AC101</option>
+	<option value="沈潔華">AD701</option>  
+</select>
+導師 : <span id="showPanel" style="color:blue"></span><p>	
+</form>    
+
+
+<script>
+function $id( id ){
+	return document.getElementById(id);
+}
+
+function showTeacher(){
+	// var index = $id("teacher").selectedIndex;
+	// $id("showPanel").innerHTML = $id("teacher").options[index].value;
+
+	$id("showPanel").innerHTML = $id("teacher").value;
+}
+
+window.onload = function(){
+	showTeacher();
+	$id("teacher").onchange = showTeacher;
+}
+// var obj = $id("teacher");
+// document.write("length : " , obj.length, "<br>");
+// document.write("multiple : " , obj.multiple, "<br>");
+// document.write("options : " , obj.options, "<br>");
+// document.write("options.length : " , obj.options.length, "<br>");
+// document.write("options[2] : " , obj.options[2], "<br>");
+// document.write("options[2].value : " , obj.options[2].value, "<br>");
+// document.write("options[2].text : " , obj.options[2].text, "<br>");
+</script>
+</body>
+</html>

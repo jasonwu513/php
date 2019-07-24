@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>收藏我的最愛</title>
+</head>
+<body>
+<img src="snoopy_1.jpg">
+<img src="heart_white.png" id="heart" title="加入收藏">    
+</body>
+</html>
+<script>
+//加入收藏 或 取消收藏
+function switchFavorite(){
+  var heart = document.getElementById("heart");
+  if( heart.title == "加入收藏" ){
+  	heart.src = "heart_red.png";
+  	heart.title = "取消收藏";
+  }else{  //取消收藏
+    heart.src = "heart_white.png";
+    heart.title = "加入收藏";
+  }
+}
+
+function init(){
+  //設定[加入收藏 或 取消收藏]的點按事件
+  var heart = document.getElementById("heart");
+  heart.onclick = switchFavorite;
+  // heart.addEventListener("click", switchFavorite , false );
+}//init
+window.onload = init;
+</script>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>物件操作練習</title>
+</head>
+<body>
+
+<form>
+<table border=2 align="center">
+	<caption>確認訂單</caption>
+	<tr>
+		<th>收件人姓名：</th>
+		<td><input type="text"></td>
+	</tr>
+	<tr>
+		<th>收件人地址：</th>
+		<td><input type="text"></td>
+	</tr>
+	<tr>
+		<th rowspan=3>付款方式</th>
+		<td>
+			<input type="radio"	name="method" value="cash">現金			
+			<input type="radio"	name="method" value="card">信用卡
+			<input type="radio"	name="method" value="atm">ATM轉帳
+			<!-- name要相同才會變成單選 -->
+	</tr>
+	<tr  name="title"></tr>
+	<tr  name="title"></tr>
+</table>
+</form>
+
+<script type="text/javascript">
+
+	//1設定點點擊促發動作
+	function initial(){
+		var m0=document.getElementsByName("method")[0];
+		m0.onclick = reset;
+		var m1=document.getElementsByName("method")[1];
+		m1.onclick = showA;
+		var m2=document.getElementsByName("method")[2];
+		m2.onclick = showB;	//這裡呼叫函數時不能()
+	}
+
+	initial();	
+	//這裡呼叫函數時卻要括弧，真奇怪!
+
+	function reset(){
+		var title1=document.getElementsByName("title")[0];
+		title1.innerHTML="<td></td>";
+		var title2=document.getElementsByName("title")[1];
+		title2.innerHTML="";
+	}
+
+	function showA(){
+		var title1=document.getElementsByName("title")[0];
+		title1.innerHTML="<td border=0>信用卡號碼<input type='text'></td>";
+		var title2=document.getElementsByName("title")[1];
+		title2.innerHTML="<td border=0>"+		//不能直接換行。如要換行要用加號與雙引號
+		"到期年月<input type='text'></td>";
+			//border=0沒有用耶!
+			//一定要用+號不能用，號呢!
+	}
+
+	function showB(){
+		var title1=document.getElementsByName("title")[0];
+		title1.innerHTML="<td border=0>銀行代號<input type='text'></td>";
+		var title2=document.getElementsByName("title")[1];
+		title2.innerHTML="<td border=0>扣款帳號<input type='text'></td>";
+	}
+
+	// function showB(){
+	// 	var title3=document.getElementsByName("title")[0];
+	// 	title3.innerHTML="銀行代號";
+	// 	var title4=document.getElementsByName("title")[1];
+	// 	title4.innerHTML="扣款帳號";
+	// }
+
+</script>
+
+</body>
+</html>

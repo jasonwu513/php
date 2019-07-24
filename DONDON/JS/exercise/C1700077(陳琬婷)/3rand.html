@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS作業三</title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<h2>請輸入一最小值與最大值，將回傳此區間隨機整數</h2>
+	<input type="text" name="" id="min" placeholder="最小值" size="5">
+	<input type="text" name="" id="max" placeholder="最大值" size="5">
+	<input type="button" id="btn" value="送出">
+	<br>
+	<span id="return"></span>
+
+
+	<script type="text/javascript">
+		function rand(min,max){
+			var minNum=parseInt(min);
+			var maxNum=parseInt(max);
+
+			var rNumber=Math.floor(Math.random()*(maxNum-minNum+1))+minNum;
+			return rNumber;
+		}
+
+
+		function getRandnum(){
+			var minNum=document.getElementById("min").value;
+			var maxNum=document.getElementById("max").value;
+
+			if(parseInt(maxNum)-parseInt(minNum)>=0){
+				document.getElementById("return").innerHTML=rand(minNum,maxNum);
+			}
+			else{
+				window.alert("Error");
+			}
+		}
+
+		document.getElementById("btn").onclick = getRandnum;
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+<img src="add_2.png" id="btnSpotAdd">
+<form id="myForm">
+  <div class="divSpot">
+  景點<input type="text" name="spot"> <img src="trash.png" class="trash">
+  </div>
+  <input type="submit" id="btnSend" value="送出">	
+</form>  
+<script type="text/javascript">
+function $id(id){
+  return document.getElementById(id);
+}
+function $class(className){
+  return document.getElementsByClassName(className);
+}
+
+function removeSpot(e){
+        var divSpot = e.target.parentNode;
+        var divSpots = $class("divSpot");
+        if( divSpots.length>1){
+          $id("myForm").removeChild( divSpot );
+        }else{
+          alert("最少要有一個景點~~");
+        }
+};
+
+window.addEventListener("load",function(){
+     $id("btnSpotAdd").onclick=function (){
+                  var firstSpot = $class("divSpot")[0];
+                  var divSpot = firstSpot.cloneNode(true);
+                  //清掉文字盒中的資料;
+                  divSpot.getElementsByTagName("input")[0].value="";
+                  //註冊垃圾桶
+                  divSpot.getElementsByTagName("img")[0].onclick = removeSpot;
+
+                  myForm = $id("myForm");
+                  btnSend = $id("btnSend");
+                  myForm.insertBefore( divSpot, btnSend);
+       };
+
+
+     document.getElementsByClassName("trash")[0].onclick = removeSpot;
+  }, false);
+</script>
+</body>
+</html>

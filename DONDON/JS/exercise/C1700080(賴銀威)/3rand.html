@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	最小值<input type="text" name="" id="min">
+	最大值<input type="text" name="" id="max">
+	<input type="button" name="" id="get" value="送出">
+	<div id="print"></div>
+
+	<script type="text/javascript">
+		function rand(min,max){
+			var cast = Math.floor(Math.random()*(max-min))+parseInt(min);
+			if(cast==parseInt(max)){
+				cast = cast-1;
+			}else if(cast==parseInt(min)){
+				cast = cast+1;
+			}
+			return cast;
+		}
+
+		function information(){
+			var min = document.getElementById("min").value;
+			var max = document.getElementById("max").value;
+			if(parseInt(max)-parseInt(min)>=0){
+				document.getElementById("print").innerHTML = rand(min,max);
+			}else{
+				alert("文盲??");
+			}
+		}
+		
+		document.getElementById("get").onclick = information;
+
+	</script>
+</body>
+</html>

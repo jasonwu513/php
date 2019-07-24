@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>6payMethod.htm</title>
+	<style type="text/css">
+	caption{
+		margin: 5px;
+		font-size: 20px;
+		font-weight: bold;
+		font-family: 標楷體;
+	}
+	table{
+		margin: auto;
+	}
+	table,td{
+		border-collapse:collapse;
+		border: 1px solid black;	
+		padding: 10px;
+	}
+	tr>td:nth-child(2){
+		text-align: center;
+	}
+	tr>td:nth-child(2) > div{
+		text-align: right;
+	}
+
+</style>
+</head>
+<body>
+<table>
+	<caption>確認訂單</caption>
+	<tr>
+		<td>收件人姓名:</td>
+		<td>
+			<input type="text" name="name">
+		</td>
+	</tr>
+	<tr>
+		<td>收件人地址:</td>
+		<td>
+			<input type="text" name="address">
+		</td>
+	</tr>
+	<tr>
+		<td>付款方式</td>
+		<td>
+			<label><input type="radio" name="method" id="money">現金</label>
+			<label><input type="radio" name="method" id="card">信用卡</label>
+			<label><input type="radio" name="method" id="atm">ATM轉帳</label>
+			<div id="cardArea" style="display: none;">
+				<p>信用卡號碼:<input type="text" name="num"></p>
+				<p>到期年月:<input type="text" name="time"></p>
+			</div>
+			<div id="atmArea" style="display: none;">
+				<p>銀行代號<input type="text" name="code"></p>
+				<p>扣款帳號<input type="text" name="account"></p>
+			</div>
+		</td>
+	</tr>
+</table>
+
+<script type="text/javascript">
+function allhide(){
+	document.getElementById("cardArea").style.display = "none";
+	document.getElementById("atmArea").style.display = "none";
+}
+function showcard(){
+	document.getElementById("cardArea").style.display = "";
+	document.getElementById("atmArea").style.display = "none";
+}
+function showatm(){
+	document.getElementById("atmArea").style.display = "";
+	document.getElementById("cardArea").style.display = "none";
+}
+
+document.getElementById("money").onclick = allhide;
+document.getElementById("card").onclick = showcard;
+document.getElementById("atm").onclick = showatm;
+
+</script>	
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function rand(a,b){
+      if (a>b) {
+        max=a;
+        min=b;
+      }else {
+        min=a;
+        max=b;
+      }
+      // console.log(max);
+      // console.log(min);
+      var array=new Array();
+
+      // document.write("max:",max,"<br>","min:",min);
+      for (var i = 0; i <= (max-min); i++) {
+        array[i]=min+i;
+        // console.log(i);
+      }
+      // return array;
+      var rand=array[Math.floor(Math.random()*(max-min+1))]
+      return rand;
+    }
+
+randomnumber=rand(4,7);
+  document.write('這次隨機抽出',randomnumber,'組數字',"(R/G/B/randomnumber)");
+  // document.write(randomnumber,"<br>");
+  var array=new Array();
+
+  for (var i = 1; i <= randomnumber; i++) {
+    var r = rand(0,16);
+    var g = rand(0,16);
+    var b = rand(0,16);
+    rHexadecimal=r.toString(16);
+    gHexadecimal=g.toString(16);
+    bHexadecimal=b.toString(16);
+
+    document.write("<p style='color:#",rHexadecimal,gHexadecimal,bHexadecimal,"'>",rHexadecimal,'/',gHexadecimal,'/',bHexadecimal,'/',rand(0,9),"</p>")
+
+  }
+
+
+  </script>
+
+</body>
+</html>

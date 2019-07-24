@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>array</title>
+</head>
+<body>
+<h2>自己寫insert到陣列</h2>
+<script type="text/javascript">
+var arr = new Array(10,20,30,40,50,60);
+var index = 4;
+for( var i=arr.length; i > index   ; i--){
+	arr[i] = arr[i-1];
+}
+arr[index] = 100;
+document.write( arr ,"<br>");
+</script>  
+
+<h2>slice(start,end)</h2>
+<script type="text/javascript">
+var arr = new Array(10,20,30,40,50,60,70,80,90);
+var arr2 = arr.slice(2,4); //30,40
+document.write( "arr : " ,arr ,"<br>"); //10,20,30,40,50,60,70,80,90
+document.write( "arr2 : " ,arr2 ,"<br>");
+</script>  
+
+<h2>splice(start,length)</h2>
+<script type="text/javascript">
+var arr = new Array(10,20,30,40,50,60,70,80,90);
+var arr2 = arr.splice(2,4); 
+document.write( "arr : " ,arr ,"<br>"); //10,20,70,80,90
+document.write( "arr2 : " ,arr2 ,"<br>");//30,40,50,60
+</script>  
+
+<h2>splice(start,length,data1,data2,data3)</h2>
+<script type="text/javascript">
+var arr = new Array(10,20,30,40,50,60,70,80,90);
+var arr2 = arr.splice(2,4,100,200); 
+document.write( "arr : " ,arr ,"<br>"); //10,20,100,200,70,80,90
+document.write( "arr2 : " ,arr2 ,"<br>");//30,40,50,60
+</script>  
+
+<h2>splice(start,length,..,..,..)===insert</h2>
+<script type="text/javascript">
+var arr = new Array(10,20,30,40,50,60,70,80,90);
+var arr2 = arr.splice(1,0,100); 
+document.write( "arr : " ,arr ,"<br>"); //10,20,100,200,70,80,90
+document.write( "arr2 : " ,arr2 ,"<br>");//30,40,50,60
+</script>  
+</body>
+</html>

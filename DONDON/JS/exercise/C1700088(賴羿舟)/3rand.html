@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<h3>請輸入範圍，系統將回傳範圍內一隨機整數</h3>
+<input type="text" id="min" placeholder="最小值">
+<span>~</span>
+<input type="text" id="max" placeholder="最大值">
+<input type="button" id="send" value="輸入完成">
+<div id="ans"></div>
+
+<script type="text/javascript">
+
+function rand(min, max){
+	var answer = Math.round(Math.random()*(max-min)) + parseInt(min);
+
+	return answer;
+}
+
+function getRand(){
+	var minimum = document.getElementById("min").value;
+	var maximum = document.getElementById("max").value;
+
+	if(parseInt(maximum) - parseInt(minimum) >= 0){
+		document.getElementById("ans").innerHTML = rand(minimum,maximum);
+	}
+	else{
+		document.getElementById("ans").innerHTML = "範圍錯誤"
+	}
+}
+
+document.getElementById("send").onclick = getRand;
+
+</script>
+	
+</body>
+</html>

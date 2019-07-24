@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	身分證檢查：<input type="text" name="memId" value="" id="checked">
+	<input type="button" value="檢查" id="n">
+
+	<script type="text/javascript">
+
+	function isIdNo(idNo){
+		var number = document.getElementById("checked").value;
+		if (number.length!=10) {
+			window.alert('請輸入身分證十碼(含首字英文)');
+		}else{
+			  function checkInput(){
+   			 	var ID= document.getElementById("ID").value;
+   				var Idlen=ID.length;
+   if(RegExp.test(ID)){
+    window.alert("正確");
+   }else{
+    window.alert("=錯誤");
+   }
+			var RegExp =/^[a-zA-Z][1|2][0-9]{8}$/;
+			if(regExp.test(memId)){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+	}
+
+		
+
+
+	function init(){
+		var n = document.getElementById('n');
+		n.onclick = isIdNo;
+
+	}
+
+	window.onload = init;
+
+	</script>
+
+	
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+</head>
+<body>
+<h2>js物件轉json字串</h2>
+<script type="text/javascript">
+var emp = {"empno" : "7111",
+           "ename" : "Ann",
+           "salary" : 33000,
+           "phone" : ["03-4257387","03-168168","0933-168168"]}	
+document.write(JSON.stringify(emp) , "<br>");           
+</script>  
+
+<h2>json字串轉js物件</h2>
+<script type="text/javascript">
+var jsonStr ='{"empno":"7111","ename":"Ann","salary":33000,"phone":["03-4257387","03-168168","0933-168168"]}';	
+var emp2=JSON.parse( jsonStr );
+document.write("代號 : " , emp2.empno , "<br>");	
+document.write("姓名 : " , emp2.ename , "<br>");  
+document.write("薪資 : " , emp2.salary , "<br>");	
+document.write("電話 : " , emp2.phone , "<br>");  
+document.write("電話[0] : " , emp2.phone[0] , "<br>");   
+</script>  
+</body>
+</html>
